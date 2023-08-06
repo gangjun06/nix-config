@@ -1,9 +1,7 @@
 ![banner](./banner.png)
-<center>
+<div align="center">
   <h1>Kangjun's Setups</h1>
-</center>
-
-
+</div>
 
 - [Dotfiles](./dotfiles/README.md)
 - [Wallpapers](./wallpapers/README.md)
