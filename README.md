@@ -1,8 +1,12 @@
-# Kangjun's Setups
+![banner](./banner.png)
+<center>
+  <h1>Kangjun's Setups</h1>
+</center>
 
-## Dotfiles
 
-- See here: [Dotfiles](./dotfiles/README.md)
+
+- [Dotfiles](./dotfiles/README.md)
+- [Wallpapers](./wallpapers/README.md)
 
 
 ## My Environment
