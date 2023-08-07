@@ -1,4 +1,4 @@
-![banner](./banner.png)
+![banner](./assets/banner.png)
 <div align="center">
   <h1>Kangjun's Setups</h1>
 </div>
