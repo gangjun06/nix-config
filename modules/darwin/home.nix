@@ -1,11 +1,11 @@
-{
+config: {
   pkgs,
   my-meta,
   ...
 }: let
-  # inherit (config.my-meta) username home;
-  username = "gangjun";
-  home = "/Users/gangjun";
+  inherit (config.my-meta) username home;
+  # username = "gangjun";
+  # home = "/Users/gangjun";
 in {
   home.username = username;
   home.homeDirectory = home;
@@ -45,4 +45,8 @@ in {
       recursive = true;
     };
   };
+
+  imports = [
+    ../shared/programs/shell.nix
+  ];
 }

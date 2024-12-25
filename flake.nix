@@ -22,15 +22,14 @@
     nixpkgs,
     ...
   } @ inputs: let
+    inherit (import ./lib/attrsets.nix {inherit (nixpkgs) lib;}) recursiveMergeAttrs;
     inherit (import ./lib/flake.nix inputs) mkDarwinConfig;
-  in {
-    inherit
+  in
+    recursiveMergeAttrs [
       (mkDarwinConfig {
         username = "gangjun";
         profile = "kj-default";
         system = "aarch64-darwin";
       })
-      darwinConfigurations
-      ;
-  };
+    ];
 }

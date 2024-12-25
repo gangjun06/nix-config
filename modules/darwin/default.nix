@@ -28,12 +28,12 @@ in {
     # pkgs.vim
   ];
 
-  # home-manager = {
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  #   verbose = true;
-  #   users.${config.my-meta.username} = import ./home.nix;
-  # };
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    verbose = true;
+    users.${config.my-meta.username} = import ./home.nix config;
+  };
 
   fonts.packages = with pkgs; [
     cascadia-code
@@ -47,17 +47,15 @@ in {
   programs.zsh.enable = true;
 
   imports = [
-    # flake.inputs.nix-homebrew.darwinModules.nix-homebrew
-    # flake.inputs.home-manager.darwinModules.home-manager
+    flake.inputs.nix-homebrew.darwinModules.nix-homebrew
+    flake.inputs.home-manager.darwinModules.home-manager
     ../meta.nix
 
-    # ./homebrew.nix
-    # ./system.nix
+    ./homebrew.nix
+    ./system.nix
 
-    # ./services/yabai.nix
+    ./services/yabai.nix
     # ./services/skhd.nix
     # ./services/sketchybar.nix
-
-    # ../shared/programs/shell.nix
   ];
 }
