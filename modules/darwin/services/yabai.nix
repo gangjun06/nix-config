@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (config.my-meta) username;
+in {
   services.jankyborders = {
     enable = true;
     package = pkgs.jankyborders;
@@ -9,6 +15,10 @@
     inactive_color = "0xff45475a";
     # blacklist = "Arc";
   };
+
+  environment.etc."sudoers.d/yabai".text = ''
+    ${username} ALL = (root) NOPASSWD: ${pkgs.yabai}/bin/yabai --load-sa
+  '';
 
   services.yabai = {
     enable = true;
@@ -41,6 +51,14 @@
     };
 
     extraConfig = ''
+      # reference - https://github.com/rayandrew/nix-config/blob/main/nix-darwin/yabai/default.nix
+      wait4path /etc/sudoers.d/yabai
+      sudo yabai --load-sa
+      launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
+      yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+
+      # setup rules
       yabai -m rule --add app="^System Settings$" manage=off
       yabai -m rule --add app="^Calculator$" manage=off
       yabai -m rule --add app="^Karabiner-Elements$" manage=off
@@ -68,36 +86,36 @@
     '';
   };
 
-  # https://github.com/koekeishiya/yabai/issues/1880#issuecomment-1765074926
-  system.activationScripts.yabai-setup = {
-    enable = true;
-    text = ''
-      #!/bin/bash
+  # # https://github.com/koekeishiya/yabai/issues/1880#issuecomment-1765074926
+  # system.activationScripts.yabai-setup = {
+  #   enable = true;
+  #   text = ''
+  #     #!/bin/bash
 
-      # Get the SHA-256 hash of the yabai program
-      YABAI_PATH=$(which yabai)
-      if [ -z "$YABAI_PATH" ]; then
-          echo "yabai not found!"
-          exit 1
-      fi
-      HASH=$(shasum -a 256 "$YABAI_PATH" | awk '{print $1}')
+  #     # Get the SHA-256 hash of the yabai program
+  #     YABAI_PATH=$(which yabai)
+  #     if [ -z "$YABAI_PATH" ]; then
+  #         echo "yabai not found!"
+  #         exit 1
+  #     fi
+  #     HASH=$(shasum -a 256 "$YABAI_PATH" | awk '{print $1}')
 
-      # Check if HASH is non-empty
-      if [ -z "$HASH" ]; then
-          echo "Failed to get hash for yabai!"
-          exit 1
-      fi
+  #     # Check if HASH is non-empty
+  #     if [ -z "$HASH" ]; then
+  #         echo "Failed to get hash for yabai!"
+  #         exit 1
+  #     fi
 
-      # Construct the new sudoers entry
-      SUDOERS_ENTRY="gangjun ALL=(root) NOPASSWD: sha256:$HASH $YABAI_PATH --load-sa"
+  #     # Construct the new sudoers entry
+  #     SUDOERS_ENTRY="gangjun ALL=(root) NOPASSWD: sha256:$HASH $YABAI_PATH --load-sa"
 
-      # Write the entry to /private/etc/sudoers.d/yabai
-      echo "$SUDOERS_ENTRY" | sudo tee /private/etc/sudoers.d/yabai > /dev/null
+  #     # Write the entry to /private/etc/sudoers.d/yabai
+  #     echo "$SUDOERS_ENTRY" | sudo tee /private/etc/sudoers.d/yabai > /dev/null
 
-      # Set the appropriate permissions for the sudoers file
-      sudo chmod 0440 /private/etc/sudoers.d/yabai
+  #     # Set the appropriate permissions for the sudoers file
+  #     sudo chmod 0440 /private/etc/sudoers.d/yabai
 
-      echo "Updated /private/etc/sudoers.d/yabai successfully!"
-    '';
-  };
+  #     echo "Updated /private/etc/sudoers.d/yabai successfully!"
+  #   '';
+  # };
 }

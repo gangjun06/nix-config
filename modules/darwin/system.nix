@@ -1,60 +1,6 @@
-{
-  self,
-  pkgs,
-  ...
-}: rec {
-  users.users.gangjun = {
-    name = "gangjun";
-    home = "/Users/gangjun";
-    isHidden = false;
-    shell = pkgs.nushell;
-  };
-
-  imports = [
-    ./services/yabai.nix
-    ./services/skhd.nix
-    ./services/sketchybar.nix
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = [
-    pkgs.vim
-  ];
-
-  fonts.packages = with pkgs; [
-    cascadia-code
-    nerd-fonts.jetbrains-mono
-  ];
-
-  homebrew = {
-    enable = true;
-  };
-
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
-
-  # Enable alternative shell support in nix-darwin.
-  programs.zsh.enable = true;
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 5;
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
-
-  system.defaults.CustomUserPreferences = {
-    "com.apple.WindowManager" = {
-      EnableTiledWindowMargins = false;
-      EnableTilingByEdgeDrag = false;
-      EnableTilingOptionAccelerator = false;
-      EnableTopTilingByEdgeDrag = false;
-    };
-  };
-
+{config, ...}: let
+  inherit (config.my-meta) home;
+in {
   system.defaults = {
     NSGlobalDomain = {
       # Whether to enable “Natural” scrolling direction
@@ -110,9 +56,9 @@
       ];
 
       persistent-others = [
-        "/Users/gangjun/Documents/"
-        "/Users/gangjun/Pictures/screenshots/"
-        "/Users/gangjun/Downloads/"
+        "${home}/Documents/"
+        "${home}/Pictures/screenshots/"
+        "${home}/Downloads/"
       ];
 
       # Hot corner bottom right -> show desktop(2) / others -> disabled(1)

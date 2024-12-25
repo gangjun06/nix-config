@@ -13,42 +13,24 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = inputs @ {
+  outputs = {
     self,
-    nix-darwin,
-    nix-homebrew,
     nixpkgs,
-    home-manager,
-  }: {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake ~/nix#kj-default
-    darwinConfigurations."kj-default" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            enable = true;
-            user = "gangjun";
-            autoMigrate = true;
-            #enableRosetta = true;
-          };
-        }
-        home-manager.darwinModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            verbose = true;
-            users.gangjun = import ./modules/darwin/home.nix;
-          };
-        }
-        ./modules/shared/config
-        ./modules/darwin/config.nix
-      ];
-      specialArgs = {inherit inputs;};
-    };
+    ...
+  } @ inputs: let
+    inherit (import ./lib/flake.nix inputs) mkDarwinConfig;
+  in {
+    inherit
+      (mkDarwinConfig {
+        username = "gangjun";
+        profile = "kj-default";
+        system = "aarch64-darwin";
+      })
+      darwinConfigurations
+      ;
   };
 }

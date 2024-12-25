@@ -1,8 +1,15 @@
-{pkgs, ...}: let
-  user = "gangjun";
+{
+  config,
+  lib,
+  pkgs,
+  flake,
+  system,
+  ...
+}: let
+  inherit (config.my-meta) username home;
 in {
-  home.username = user;
-  home.homeDirectory = "/Users/${user}";
+  home.username = username;
+  home.homeDirectory = home;
 
   home.stateVersion = "24.11";
 
@@ -22,10 +29,6 @@ in {
 
   programs.htop.enable = true;
   programs.htop.settings.show_program_path = true;
-
-  imports = [
-    ./../shared/programs/shell.nix
-  ];
 
   home.file = {
     ".config/nushell" = {
