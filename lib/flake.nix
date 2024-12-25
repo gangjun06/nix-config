@@ -18,6 +18,25 @@ in {
       inherit system;
       modules =
         [
+          inputs.nix-homebrew.darwinModules.nix-homebrew
+          inputs.home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              verbose = true;
+              users."gangjun" = import ../modules/darwin/home.nix;
+
+              # extraSpecialArgs = {
+              #   config = {
+              #     my-meta = {
+              #       username = "gangjun";
+              #       home = "/Users/gangjun";
+              #     };
+              #   };
+              # };
+            };
+          }
           (../. + "/hosts/${system}@${profile}")
         ]
         ++ extraModules;

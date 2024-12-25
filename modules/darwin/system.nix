@@ -2,6 +2,15 @@
   inherit (config.my-meta) home;
 in {
   system.defaults = {
+    CustomUserPreferences = {
+      "com.apple.WindowManager" = {
+        EnableTiledWindowMargins = false;
+        EnableTilingByEdgeDrag = false;
+        EnableTilingOptionAccelerator = false;
+        EnableTopTilingByEdgeDrag = false;
+      };
+    };
+
     NSGlobalDomain = {
       # Whether to enable “Natural” scrolling direction
       "com.apple.swipescrolldirection" = false;

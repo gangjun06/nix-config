@@ -1,12 +1,11 @@
 {
-  config,
-  lib,
   pkgs,
-  flake,
-  system,
+  my-meta,
   ...
 }: let
-  inherit (config.my-meta) username home;
+  # inherit (config.my-meta) username home;
+  username = "gangjun";
+  home = "/Users/gangjun";
 in {
   home.username = username;
   home.homeDirectory = home;

@@ -8,52 +8,32 @@
 }: let
   inherit (config.my-meta) username home;
 in {
+  # $ darwin-rebuild changelog
+  system.stateVersion = 5;
+
   users.users.${username} = {
     name = username;
     home = home;
     isHidden = false;
     shell = pkgs.nushell;
-  };
-
-  imports = [
-    ../meta.nix
-
-    flake.inputs.nix-homebrew.darwinModules.nix-homebrew
-    flake.inputs.home-manager.darwinModules.home-manager
-    ./system.nix
-
-    # ./services/yabai.nix
-    # ./services/skhd.nix
-    # ./services/sketchybar.nix
-
-    # ../shared/programs/shell.nix
-  ];
-
-  nix-homebrew = {
-    enable = true;
-    user = username;
-    autoMigrate = true;
-    #enableRosetta = true;
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    verbose = true;
-    users.${username} = import ./home.nix;
-
-    extraSpecialArgs = {
-      inherit flake system config;
-    };
+    packages = [];
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = "aarch64-darwin";
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = [
-    pkgs.vim
+    # pkgs.vim
   ];
+
+  # home-manager = {
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+  #   verbose = true;
+  #   users.${config.my-meta.username} = import ./home.nix;
+  # };
 
   fonts.packages = with pkgs; [
     cascadia-code
@@ -66,19 +46,18 @@ in {
   # Enable alternative shell support in nix-darwin.
   programs.zsh.enable = true;
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 5;
+  imports = [
+    # flake.inputs.nix-homebrew.darwinModules.nix-homebrew
+    # flake.inputs.home-manager.darwinModules.home-manager
+    ../meta.nix
 
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
+    # ./homebrew.nix
+    # ./system.nix
 
-  system.defaults.CustomUserPreferences = {
-    "com.apple.WindowManager" = {
-      EnableTiledWindowMargins = false;
-      EnableTilingByEdgeDrag = false;
-      EnableTilingOptionAccelerator = false;
-      EnableTopTilingByEdgeDrag = false;
-    };
-  };
+    # ./services/yabai.nix
+    # ./services/skhd.nix
+    # ./services/sketchybar.nix
+
+    # ../shared/programs/shell.nix
+  ];
 }
