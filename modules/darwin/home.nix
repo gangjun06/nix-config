@@ -14,6 +14,10 @@ in {
   home.stateVersion = "24.11";
 
   home.packages = [
+    # <sketchybar>
+    pkgs.sketchybar-app-font
+    # </sketchybar>
+
     # Cli Utils
     pkgs.wget
     pkgs.curl
@@ -26,22 +30,26 @@ in {
     # GUI Apps - Study
     # pkgs.anki
     # pkgs.vlc
+
+    # <sketchybar>
+    pkgs.sbar-lua
+    # </sketchybar>
   ];
 
   programs.home-manager.enable = true;
 
-  home.file = {
-    # ".config/sketchybar" = {
-    #   source = ./files/sketchybar;
-    #   recursive = true;
-    # };
-  };
-
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
+    ./services/sketchybar-home.nix
+
     ../shared/programs/btop.nix
     ../shared/programs/shell.nix
     ../shared/programs/spicetify.nix
     ../shared/programs/wezterm.nix
   ];
+
+  catppuccin.enable = true;
+  catppuccin.flavor = "mocha";
+
+  xdg.enable = true;
 }

@@ -11,6 +11,8 @@
     configFile.source = ../files/nushell/config.nu;
 
     shellAliases = {
+      mac-open = "/usr/bin/open";
+
       b = "bat";
       lg = "lazygit";
 

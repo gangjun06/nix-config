@@ -16,6 +16,7 @@ in {
     };
 
     NSGlobalDomain = {
+      _HIHideMenuBar = true;
       # Whether to enable “Natural” scrolling direction
       "com.apple.swipescrolldirection" = false;
     };
@@ -32,7 +33,7 @@ in {
     dock = {
       autohide = true;
       autohide-time-modifier = 0.0;
-      expose-animation-duration = 0.0;
+      expose-animation-duration = 15; # Disable dock
       expose-group-apps = false;
       tilesize = 24;
       largesize = 79;

@@ -18,6 +18,14 @@ in {
     casks = [
       "lookaway"
       "kicad" # cad app
+
+      # <sketchybar>
+      "sf-symbols"
+      "font-sf-mono"
+      "font-sf-pro"
+      "switchaudio-osx"
+      "nowplaying-cli"
+      # </sketchybar>
     ];
   };
 }

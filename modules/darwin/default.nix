@@ -4,8 +4,10 @@
   inputs,
   lib,
   pkgs,
-  flake,
+  packages,
   system,
+  nixpkgs,
+  outputs,
   ...
 }: let
   inherit (userConfig) username home;
@@ -59,6 +61,6 @@ in {
 
     ./services/yabai.nix
     ./services/skhd.nix
-    # ./services/sketchybar.nix
+    ./services/sketchybar.nix
   ];
 }
