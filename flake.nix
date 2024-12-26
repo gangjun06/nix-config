@@ -15,21 +15,35 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
     self,
     nixpkgs,
+    catppuccin,
     ...
   } @ inputs: let
     inherit (import ./lib/attrsets.nix {inherit (nixpkgs) lib;}) recursiveMergeAttrs;
     inherit (import ./lib/flake.nix inputs) mkDarwinConfig;
+    inherit (import ./lib/meta.nix {}) mkUserConfig;
   in
     recursiveMergeAttrs [
       (mkDarwinConfig {
-        username = "gangjun";
         profile = "kj-default";
         system = "aarch64-darwin";
+        userConfig = mkUserConfig {
+          username = "gangjun";
+          name = "Kangjun Lee";
+          email = "me@gangjun.dev";
+          home = "/Users/gangjun";
+        };
       })
     ];
 }

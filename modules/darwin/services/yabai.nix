@@ -1,14 +1,15 @@
 {
   pkgs,
+  userConfig,
   config,
   ...
 }: let
-  inherit (config.my-meta) username;
+  inherit (userConfig) username;
 in {
   services.jankyborders = {
     enable = true;
     package = pkgs.jankyborders;
-    style = "square";
+    style = "round";
     width = 6.0;
     hidpi = false;
     active_color = "0xffcba6f7";

@@ -1,9 +1,10 @@
-config: {
+{
   pkgs,
-  my-meta,
+  userConfig,
+  inputs,
   ...
 }: let
-  inherit (config.my-meta) username home;
+  inherit (userConfig) username home;
   # username = "gangjun";
   # home = "/Users/gangjun";
 in {
@@ -14,39 +15,33 @@ in {
 
   home.packages = [
     # Cli Utils
-    pkgs.htop
-    pkgs.fortune
+    pkgs.wget
+    pkgs.curl
 
-    # Development
-    pkgs.wezterm
+    pkgs.fortune
 
     # GUI Apps - Chat
     pkgs.discord
+
+    # GUI Apps - Study
+    # pkgs.anki
+    # pkgs.vlc
   ];
 
   programs.home-manager.enable = true;
 
-  programs.htop.enable = true;
-  programs.htop.settings.show_program_path = true;
-
   home.file = {
-    ".config/nushell" = {
-      source = ./../shared/files/nushell;
-      recursive = true;
-    };
-
-    ".config/sketchybar" = {
-      source = ./files/sketchybar;
-      recursive = true;
-    };
-
-    ".config/wezterm" = {
-      source = ./files/wezterm;
-      recursive = true;
-    };
+    # ".config/sketchybar" = {
+    #   source = ./files/sketchybar;
+    #   recursive = true;
+    # };
   };
 
   imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
+    ../shared/programs/btop.nix
     ../shared/programs/shell.nix
+    ../shared/programs/spicetify.nix
+    ../shared/programs/wezterm.nix
   ];
 }

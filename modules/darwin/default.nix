@@ -1,12 +1,14 @@
 {
+  userConfig,
   config,
+  inputs,
   lib,
   pkgs,
   flake,
   system,
   ...
 }: let
-  inherit (config.my-meta) username home;
+  inherit (userConfig) username home;
 in {
   # $ darwin-rebuild changelog
   system.stateVersion = 5;
@@ -32,7 +34,10 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     verbose = true;
-    users.${config.my-meta.username} = import ./home.nix config;
+    users.${username} = import ./home.nix;
+    extraSpecialArgs = {
+      inherit inputs userConfig;
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -47,15 +52,13 @@ in {
   programs.zsh.enable = true;
 
   imports = [
-    flake.inputs.nix-homebrew.darwinModules.nix-homebrew
-    flake.inputs.home-manager.darwinModules.home-manager
-    ../meta.nix
-
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+    inputs.home-manager.darwinModules.home-manager
     ./homebrew.nix
     ./system.nix
 
     ./services/yabai.nix
-    # ./services/skhd.nix
+    ./services/skhd.nix
     # ./services/sketchybar.nix
   ];
 }

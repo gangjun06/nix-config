@@ -1,5 +1,9 @@
-{config, ...}: let
-  inherit (config.my-meta) home;
+{
+  userConfig,
+  config,
+  ...
+}: let
+  inherit (userConfig) home;
 in {
   system.defaults = {
     CustomUserPreferences = {

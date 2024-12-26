@@ -1,4 +1,3 @@
-# Shamelessly copied from https://github.com/thiagokokada/nix-configs/blob/master/lib/flake.nix
 {
   self,
   nix-darwin,
@@ -8,22 +7,19 @@
   inherit (flake-utils.lib) mkApp;
 in {
   mkDarwinConfig = {
-    username,
     profile ? "default",
     system ? "aarch64-darwin",
-    darwinSystem ? nix-darwin.lib.darwinSystem,
-    extraModules ? [],
+    userConfig ? {},
   }: {
-    darwinConfigurations.${profile} = darwinSystem {
+    darwinConfigurations.${profile} = nix-darwin.lib.darwinSystem {
       inherit system;
-      modules =
-        [
-          (../. + "/hosts/${system}@${profile}")
-        ]
-        ++ extraModules;
+      modules = [
+        (../. + "/hosts/${system}@${profile}")
+      ];
       specialArgs = {
-        inherit system;
-        flake = self;
+        inherit system inputs;
+        inherit (self) outputs;
+        inherit userConfig;
       };
     };
 

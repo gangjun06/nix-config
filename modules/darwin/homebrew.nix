@@ -1,14 +1,23 @@
-{config, ...}: let
-  inherit (config.my-meta) username;
+{
+  userConfig,
+  config,
+  ...
+}: let
+  inherit (userConfig) username;
 in {
-  homebrew = {
-    enable = true;
-  };
-
   nix-homebrew = {
     enable = true;
     user = username;
     autoMigrate = true;
     #enableRosetta = true;
+  };
+
+  homebrew = {
+    enable = true;
+
+    casks = [
+      "lookaway"
+      "kicad" # cad app
+    ];
   };
 }
