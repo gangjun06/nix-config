@@ -33,7 +33,7 @@ in {
     dock = {
       autohide = true;
       autohide-time-modifier = 0.0;
-      expose-animation-duration = 15; # Disable dock
+      expose-animation-duration = 15.0; # Disable dock
       expose-group-apps = false;
       tilesize = 24;
       largesize = 79;

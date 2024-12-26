@@ -1,16 +1,18 @@
 {pkgs, ...}: {
-  xdg.configFile."sketchybar" = {
+  home.file.".config/sketchybar" = {
     source = ../files/sketchybar;
     recursive = true;
     onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
   };
-  xdg.dataFile."sketchybar_lua/sketchybar.so" = {
+  home.file.".local/share/sketchybar_lua/sketchybar.so" = {
     source = "${pkgs.sbar-lua}/lib/sketchybar.so";
     onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
   };
-  xdg.configFile."sketchybar/sketchybarrc" = {
+  home.file.".config/sketchybar/sketchybarrc" = {
     text = ''
-      #!/usr/bin/env ${pkgs.lua}/bin/lua
+      #!/usr/bin/env ${pkgs.lua54Packages.lua}/bin/lua
+
+      package.path = "./?.lua;./?/init.lua;" .. package.path
 
       -- Load the sketchybar-package and prepare the helper binaries
       require("helpers")

@@ -29,7 +29,6 @@ in {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = [
-    # pkgs.vim
   ];
 
   home-manager = {
@@ -37,8 +36,10 @@ in {
     useUserPackages = true;
     verbose = true;
     users.${username} = import ./home.nix;
+    # pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
     extraSpecialArgs = {
       inherit inputs userConfig;
+      # pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
     };
   };
 

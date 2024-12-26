@@ -30,28 +30,12 @@
     catppuccin,
     ...
   } @ inputs: let
-    inherit (import ./lib/attrsets.nix {inherit (nixpkgs) lib;}) recursiveMergeAttrs;
-    inherit (import ./lib/flake.nix inputs) mkDarwinConfig;
-    inherit (import ./lib/meta.nix {}) mkUserConfig;
-
-    forAllSystems = nixpkgs.lib.genAttrs ["aarch64-darwin"];
+    lib = import ./lib inputs;
+    inherit (lib) recursiveMergeAttrs mkDarwinConfig mkUserConfig;
   in
     recursiveMergeAttrs [
       {
-        packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-        overlays.default = import ./overlays {
-          inherit inputs;
-          outputs = self;
-        };
-        darwinModules.default = {
-          nixpkgs.overlays = [
-            (import ./overlays {
-              inherit inputs;
-              outputs = self;
-            })
-          ];
-        };
-        pkgs.sbar-lua = inputs.nixpkgs.legacyPackages.aarch64-darwin.sbar-lua;
+        overlays.default = import ./overlays inputs;
       }
       (mkDarwinConfig {
         profile = "kj-default";

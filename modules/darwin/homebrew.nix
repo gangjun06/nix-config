@@ -15,6 +15,15 @@ in {
   homebrew = {
     enable = true;
 
+    taps = [];
+
+    brews = [
+      # <sketchybar>
+      "switchaudio-osx"
+      "nowplaying-cli"
+      # </sketchybar>
+    ];
+
     casks = [
       "lookaway"
       "kicad" # cad app
@@ -23,8 +32,6 @@ in {
       "sf-symbols"
       "font-sf-mono"
       "font-sf-pro"
-      "switchaudio-osx"
-      "nowplaying-cli"
       # </sketchybar>
     ];
   };

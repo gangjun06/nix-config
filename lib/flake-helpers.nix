@@ -1,6 +1,5 @@
 {
   self,
-  nix-darwin,
   flake-utils,
   ...
 } @ inputs: let
@@ -11,9 +10,12 @@ in {
     system ? "aarch64-darwin",
     userConfig ? {},
   }: {
-    darwinConfigurations.${profile} = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.${profile} = inputs.nix-darwin.lib.darwinSystem {
       inherit system;
       modules = [
+        {
+          nixpkgs.overlays = [self.overlays.default];
+        }
         (../. + "/hosts/${system}@${profile}")
       ];
       specialArgs = {
@@ -24,7 +26,7 @@ in {
     };
 
     apps.${system}."darwinActivations/${profile}" = mkApp {
-      drv = self.outputs.darwinConfigurations.${profile}.system;
+      drv = system;
       exePath = "/activate";
     };
   };

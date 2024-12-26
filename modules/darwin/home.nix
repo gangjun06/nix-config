@@ -13,26 +13,27 @@ in {
 
   home.stateVersion = "24.11";
 
-  home.packages = [
+  home.packages = with pkgs; [
+    lua54Packages.lua
     # <sketchybar>
-    pkgs.sketchybar-app-font
+    sketchybar-app-font
     # </sketchybar>
 
     # Cli Utils
-    pkgs.wget
-    pkgs.curl
+    wget
+    curl
 
-    pkgs.fortune
+    fortune
 
     # GUI Apps - Chat
-    pkgs.discord
+    discord
 
     # GUI Apps - Study
     # pkgs.anki
     # pkgs.vlc
 
     # <sketchybar>
-    pkgs.sbar-lua
+    # pkgs.sbar-lua
     # </sketchybar>
   ];
 
@@ -50,6 +51,4 @@ in {
 
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
-
-  xdg.enable = true;
 }
