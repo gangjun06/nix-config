@@ -32,6 +32,9 @@ in {
     sketchybar-app-font
     # </sketchybar>
 
+    # Development
+    fnm # node version manager
+
     # Cli Utils
     wget
     curl

@@ -89,7 +89,6 @@ $env.PATH = ($env.PATH |
 
 $env.GPG_TTY = (tty)
 $env.ZSH = ($env.HOME + "/.oh-my-zsh")
-$env.NVM_DIR = ($env.HOME + "/.nvm")
 $env.PKG_CONFIG_PATH = "/opt/homebrew/opt/curl/lib/pkgconfig"
 $env.PNPM_HOME = ($env.HOME + "/Library/pnpm")
 $env.BUN_INSTALL = ($env.HOME + "/.bun")
@@ -103,7 +102,6 @@ $env.PATH = ($env.PATH |
   prepend "/opt/mysql-client/bin" |
   prepend "/opt/homebrew/opt/pcsc-lite/sbin" |
   prepend "/opt/homebrew/opt/pcsc-lite/bin" |
-  prepend "/Users/gangjun/.nvm/versions/node/v16.13.0/bin" |
   prepend "/Library/Frameworks/Python.framework/Versions/3.10/bin" |
   prepend "/opt/homebrew/bin" |
   prepend "/opt/homebrew/sbin" |
@@ -136,21 +134,6 @@ $env.PATH = ($env.PATH |
 # Apply git alias
 source ~/.config/nushell/git-alias.nu
 
-
-# NVM initialization
-def load-nvmrc [] {
-  let node_version = (nvm version)
-  let nvmrc_path = (nvm_find_nvmrc)
-
-  if ($nvmrc_path != null) {
-    let nvmrc_node_version = (nvm version ((cat $nvmrc_path).out))
-
-    if ($nvmrc_node_version == "N/A") {
-      nvm install --silent
-    } else if ($nvmrc_node_version != $node_version) {
-      nvm use --silent
-    }
-  } else if ($node_version != (nvm version default)) {
-    nvm use default --silent
-  }
-}
+# fnm
+fnm env --json | from json | load-env
+$env.PATH = ($env.PATH | prepend $"($env.FNM_MULTISHELL_PATH)/bin")
