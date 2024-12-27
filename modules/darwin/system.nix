@@ -1,6 +1,7 @@
 {
   userConfig,
   config,
+  pkgs,
   ...
 }: let
   inherit (userConfig) home;

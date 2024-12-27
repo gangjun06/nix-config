@@ -37,6 +37,10 @@ in {
       # <karabiner-elements>
       "karabiner-elements"
       # </karabiner-elements>
+
+      # <wallpaper>
+      "desktoppr"
+      # </wallpaper>
     ];
   };
 }

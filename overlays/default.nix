@@ -1,3 +1,5 @@
 {...} @ inputs: final: prev: {
-  sbar-lua = prev.callPackage ../pkgs/sbarlua.nix {};
+  wallpaper = prev.callPackage ../pkgs/wallpaper.nix {};
+
+  sbar-lua = prev.callPackage ../pkgs/darwin/sbarlua.nix {};
 }

@@ -16,6 +16,7 @@ in {
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
     ./sketchybar.nix
+    ./wallpaper.nix
 
     ../../shared/home/btop.nix
     ../../shared/home/shell.nix

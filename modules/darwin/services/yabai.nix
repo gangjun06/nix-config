@@ -27,7 +27,7 @@ in {
     enableScriptingAddition = true;
     config = {
       layout = "bsp";
-      external_bar = "all:35:0";
+      external_bar = "all:38:0";
       mouse_follows_focus = true;
       focus_follows_mouse = false;
       window_zoom_persist = false;
