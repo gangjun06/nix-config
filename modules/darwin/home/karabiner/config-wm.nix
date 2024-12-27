@@ -83,20 +83,20 @@ in {
         (mkComboWithCmd ["shift"] ["f13" "l"] "${yabai} -m window --swap east")
         (mkComboWithCmd ["option"] ["f13" "l"] "${yabai} -m window --stack east")
 
-        (mkComboWithCmd [] ["f13" "n"] "${yabai} -m window --rotate 90")
-        (mkComboWithCmd ["shift"] ["f13" "n"] "${yabai} -m window --rotate 270")
+        (mkComboWithCmd [] ["f13" "n"] "${yabai} -m window --rotate 270")
+        (mkComboWithCmd ["shift"] ["f13" "n"] "${yabai} -m window --rotate 90")
 
-        (mkComboWithCmd [] ["f13" "m"] "${yabai} -m window --resize left:10:0")
-        (mkComboWithCmd ["shift"] ["f13" "m"] "${yabai} -m window --resize left:-10:0")
+        (mkComboWithCmd [] ["f13" "m"] "${yabai} -m window --resize left:-150:0")
+        (mkComboWithCmd ["shift"] ["f13" "m"] "${yabai} -m window --resize left:150:0")
 
-        (mkComboWithCmd [] ["f13" ","] "${yabai} -m window --resize top:0:10")
-        (mkComboWithCmd ["shift"] ["f13" ","] "${yabai} -m window --resize top:0:-10")
+        (mkComboWithCmd [] ["f13" "comma"] "${yabai} -m window --resize bottom:0:150")
+        (mkComboWithCmd ["shift"] ["f13" "comma"] "${yabai} -m window --resize bottom:0:-150")
 
-        (mkComboWithCmd [] ["f13" "."] "${yabai} -m window --resize bottom:0:10")
-        (mkComboWithCmd ["shift"] ["f13" "."] "${yabai} -m window --resize bottom:0:-10")
+        (mkComboWithCmd [] ["f13" "period"] "${yabai} -m window --resize top:0:-150")
+        (mkComboWithCmd ["shift"] ["f13" "period"] "${yabai} -m window --resize top:0:150")
 
-        (mkComboWithCmd [] ["f13" "/"] "${yabai} -m window --resize right:10:0")
-        (mkComboWithCmd ["shift"] ["f13" "/"] "${yabai} -m window --resize right:-10:0")
+        (mkComboWithCmd [] ["f13" "slash"] "${yabai} -m window --resize right:150:0")
+        (mkComboWithCmd ["shift"] ["f13" "slash"] "${yabai} -m window --resize right:-150:0")
       ])
     ];
   };
