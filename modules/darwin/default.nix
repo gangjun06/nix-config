@@ -35,11 +35,9 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     verbose = true;
-    users.${username} = import ./home.nix;
-    # pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
+    users.${username} = import ./home;
     extraSpecialArgs = {
       inherit inputs userConfig;
-      # pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
     };
   };
 
@@ -59,9 +57,6 @@ in {
     inputs.home-manager.darwinModules.home-manager
     ./homebrew.nix
     ./system.nix
-
-    ./services/yabai.nix
-    ./services/skhd.nix
-    ./services/sketchybar.nix
+    ./services
   ];
 }

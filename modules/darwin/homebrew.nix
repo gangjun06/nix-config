@@ -33,6 +33,10 @@ in {
       "font-sf-mono"
       "font-sf-pro"
       # </sketchybar>
+
+      # <karabiner-elements>
+      "karabiner-elements"
+      # </karabiner-elements>
     ];
   };
 }

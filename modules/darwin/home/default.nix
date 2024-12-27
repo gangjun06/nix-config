@@ -13,6 +13,18 @@ in {
 
   home.stateVersion = "24.11";
 
+  imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
+    ./sketchybar.nix
+
+    ../../shared/home/btop.nix
+    ../../shared/home/shell.nix
+    ../../shared/home/spicetify.nix
+    ../../shared/home/wezterm.nix
+  ];
+
+  # ----------
+
   home.packages = with pkgs; [
     lua54Packages.lua
     # <sketchybar>
@@ -31,24 +43,17 @@ in {
     # GUI Apps - Study
     # pkgs.anki
     # pkgs.vlc
-
-    # <sketchybar>
-    # pkgs.sbar-lua
-    # </sketchybar>
   ];
 
   programs.home-manager.enable = true;
 
-  imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
-    ./services/sketchybar-home.nix
-
-    ../shared/programs/btop.nix
-    ../shared/programs/shell.nix
-    ../shared/programs/spicetify.nix
-    ../shared/programs/wezterm.nix
-  ];
-
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
+
+  # <karabiner-elements>
+  home.file.".config/karabiner/assets/complex_modifications" = {
+    source = ../files/karabiner;
+    recursive = true;
+  };
+  # </karabiner-elements>
 }

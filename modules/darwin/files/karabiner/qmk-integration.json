@@ -1,0 +1,50 @@
+{
+  "title": "QMK Integration",
+  "rules": [
+    {
+      "description": "Use Hyper+F9/F10/F11 to switch language.",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f9",
+            "modifiers": {
+              "mandatory": ["command", "control", "option", "shift"]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "/opt/homebrew/bin/macism org.youknowone.inputmethod.Gureum.han2"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "f10",
+            "modifiers": {
+              "mandatory": ["command", "control", "option", "shift"]
+            }
+          },
+          "to": [{ "select_input_source": { "language": "en" } }],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "f11",
+            "modifiers": {
+              "mandatory": ["command", "control", "option", "shift"]
+            }
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_mode_id": "com.apple.inputmethod.Japanese"
+              }
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

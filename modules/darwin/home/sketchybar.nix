@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  # <sketchybar>
   home.file.".config/sketchybar" = {
     source = ../files/sketchybar;
     recursive = true;
@@ -21,4 +22,5 @@
     executable = true;
     onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
   };
+  # </sketchybar>
 }
