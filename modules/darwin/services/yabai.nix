@@ -6,6 +6,8 @@
 }: let
   inherit (userConfig) username;
 in {
+  # <yabai />
+
   services.jankyborders = {
     enable = true;
     package = pkgs.jankyborders;
@@ -44,11 +46,11 @@ in {
       mouse_action1 = "move";
       mouse_action2 = "resize";
       mouse_drop_action = "swap";
-      top_padding = 10;
-      bottom_padding = 10;
-      left_padding = 10;
-      right_padding = 10;
-      window_gap = 10;
+      top_padding = 14;
+      bottom_padding = 14;
+      left_padding = 14;
+      right_padding = 14;
+      window_gap = 14;
     };
 
     extraConfig = ''

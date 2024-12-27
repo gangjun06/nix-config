@@ -27,7 +27,7 @@ stdenv.mkDerivation {
     description = "Catppuccin Mocha Wallpapers";
     homepage = "https://github.com/orangci/walls-catppuccin-mocha";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [davsanchez];
+    maintainers = [];
     platforms = lib.platforms.all;
   };
 }

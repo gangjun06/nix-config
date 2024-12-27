@@ -37,7 +37,7 @@ in {
     verbose = true;
     users.${username} = import ./home;
     extraSpecialArgs = {
-      inherit inputs userConfig;
+      inherit inputs userConfig outputs;
     };
   };
 

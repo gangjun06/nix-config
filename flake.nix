@@ -35,6 +35,7 @@
   in
     recursiveMergeAttrs [
       {
+        inherit lib;
         overlays.default = import ./overlays inputs;
       }
       (mkDarwinConfig {

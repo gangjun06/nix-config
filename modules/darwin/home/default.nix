@@ -17,6 +17,8 @@ in {
     inputs.catppuccin.homeManagerModules.catppuccin
     ./sketchybar.nix
     ./wallpaper.nix
+    ./hammerspoon.nix
+    ./karabiner
 
     ../../shared/home/btop.nix
     ../../shared/home/shell.nix
@@ -54,11 +56,4 @@ in {
 
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
-
-  # <karabiner-elements>
-  home.file.".config/karabiner/assets/complex_modifications" = {
-    source = ../files/karabiner;
-    recursive = true;
-  };
-  # </karabiner-elements>
 }
