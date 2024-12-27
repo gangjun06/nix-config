@@ -22,6 +22,7 @@ in {
     ../../shared/home/shell.nix
     ../../shared/home/spicetify.nix
     ../../shared/home/wezterm.nix
+    ../../shared/home/nvim.nix
   ];
 
   # ----------
