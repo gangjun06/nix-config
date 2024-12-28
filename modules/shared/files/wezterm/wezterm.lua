@@ -23,6 +23,8 @@ config.font = wezterm.font_with_fallback({
 
 config.default_prog = { "/etc/profiles/per-user/gangjun/bin/nu", "-l" }
 
+config.bold_brightens_ansi_colors = true
+
 -- fix colored blocks instead of text
 config.front_end = "WebGpu"
 

@@ -46,6 +46,7 @@
           name = "Kangjun Lee";
           email = "me@gangjun.dev";
           home = "/Users/gangjun";
+          nixConfig = "/Users/gangjun/nix";
         };
       })
     ];

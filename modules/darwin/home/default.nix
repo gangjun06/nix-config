@@ -26,6 +26,7 @@ in {
     ../../shared/home/wezterm.nix
     ../../shared/home/nvim.nix
     ../../shared/home/tmux.nix
+    ../../shared/home/ghostty.nix
   ];
 
   # ----------
@@ -54,7 +55,5 @@ in {
   ];
 
   programs.home-manager.enable = true;
-
-  catppuccin.enable = true;
   catppuccin.flavor = "mocha";
 }

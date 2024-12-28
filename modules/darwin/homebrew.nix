@@ -41,6 +41,8 @@ in {
       # <wallpaper>
       "desktoppr"
       # </wallpaper>
+
+      "ghostty"
     ];
   };
 }

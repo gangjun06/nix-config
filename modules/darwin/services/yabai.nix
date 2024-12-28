@@ -31,7 +31,7 @@ in {
       layout = "bsp";
       external_bar = "all:38:0";
       mouse_follows_focus = true;
-      focus_follows_mouse = false;
+      focus_follows_mouse = true;
       window_zoom_persist = false;
       window_placement = "second_child";
       window_shadow = "float";

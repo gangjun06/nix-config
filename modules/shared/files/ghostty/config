@@ -1,0 +1,17 @@
+theme = catppuccin-mocha
+
+background-opacity = 0.85
+background-blur-radius = 40
+
+# macOS specific features
+macos-titlebar-style = hidden
+window-decoration = false 
+window-padding-x = 10
+window-padding-y = 10
+
+# font
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+font-size = 16
+
+command = "/etc/profiles/per-user/gangjun/bin/nu -l"
