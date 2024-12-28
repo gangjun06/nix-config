@@ -25,6 +25,7 @@ in {
     ../../shared/home/spicetify.nix
     ../../shared/home/wezterm.nix
     ../../shared/home/nvim.nix
+    ../../shared/home/tmux.nix
   ];
 
   # ----------
