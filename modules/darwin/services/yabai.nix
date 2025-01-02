@@ -30,9 +30,9 @@ in {
     config = {
       layout = "bsp";
       external_bar = "all:38:0";
-      mouse_follows_focus = true;
-      focus_follows_mouse = true;
-      window_zoom_persist = false;
+      mouse_follows_focus = "on";
+      focus_follows_mouse = "autofocus";
+      window_zoom_persist = "off";
       window_placement = "second_child";
       window_shadow = "float";
       window_opacity = "off";
@@ -41,7 +41,7 @@ in {
       normal_window_opacity = 1.0;
       window_animation_duration = 0.3;
       split_ratio = 0.50;
-      auto_balance = false;
+      auto_balance = "off";
       mouse_modifier = "alt";
       mouse_action1 = "move";
       mouse_action2 = "resize";

@@ -6,105 +6,105 @@
   yabai = pkgs.yabai.outPath + "/bin/yabai";
 in {
   services.skhd = {
-    enable = false;
+    enable = true;
     package = pkgs.skhd;
 
     skhdConfig = ''
       # For normal keyboard
       # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
-      # # -- Focus to desktop --
-      # hyper - q: ${yabai} -m space --focus prev
-      # hyper - w: ${yabai} -m space --focus next
+      # -- Focus to desktop --
+      hyper - q: ${yabai} -m space --focus prev
+      hyper - w: ${yabai} -m space --focus next
 
-      # hyper - 1: ${yabai} -m space --focus 1
-      # hyper - 2: ${yabai} -m space --focus 2
-      # hyper - 3: ${yabai} -m space --focus 3
-      # hyper - 4: ${yabai} -m space --focus 4
-      # hyper - 5: ${yabai} -m space --focus 5
-      # hyper - 6: ${yabai} -m space --focus 6
-      # hyper - 7: ${yabai} -m space --focus 7
+      hyper - 1: ${yabai} -m space --focus 1
+      hyper - 2: ${yabai} -m space --focus 2
+      hyper - 3: ${yabai} -m space --focus 3
+      hyper - 4: ${yabai} -m space --focus 4
+      hyper - 5: ${yabai} -m space --focus 5
+      hyper - 6: ${yabai} -m space --focus 6
+      hyper - 7: ${yabai} -m space --focus 7
 
-      # alt - 1: ${yabai} -m space --focus 1
-      # alt - 2: ${yabai} -m space --focus 2
-      # alt - 3: ${yabai} -m space --focus 3
-      # alt - 4: ${yabai} -m space --focus 4
-      # alt - 5: ${yabai} -m space --focus 5
-      # alt - 6: ${yabai} -m space --focus 6
-      # alt - 7: ${yabai} -m space --focus 7
+      alt - 1: ${yabai} -m space --focus 1
+      alt - 2: ${yabai} -m space --focus 2
+      alt - 3: ${yabai} -m space --focus 3
+      alt - 4: ${yabai} -m space --focus 4
+      alt - 5: ${yabai} -m space --focus 5
+      alt - 6: ${yabai} -m space --focus 6
+      alt - 7: ${yabai} -m space --focus 7
 
-      # # -- Move window to desktop --
-      # shift + alt - 1: ${yabai} -m window --space 1;
-      # shift + alt - 2: ${yabai} -m window --space 2;
-      # shift + alt - 3: ${yabai} -m window --space 3;
-      # shift + alt - 4: ${yabai} -m window --space 4;
-      # shift + alt - 5: ${yabai} -m window --space 5;
-      # shift + alt - 6: ${yabai} -m window --space 6;
-      # shift + alt - 7: ${yabai} -m window --space 7;
+      # -- Move window to desktop --
+      shift + alt - 1: ${yabai} -m window --space 1;
+      shift + alt - 2: ${yabai} -m window --space 2;
+      shift + alt - 3: ${yabai} -m window --space 3;
+      shift + alt - 4: ${yabai} -m window --space 4;
+      shift + alt - 5: ${yabai} -m window --space 5;
+      shift + alt - 6: ${yabai} -m window --space 6;
+      shift + alt - 7: ${yabai} -m window --space 7;
 
-      # #  -- Focus to window --
-      # alt - j: ${yabai} -m window --focus south
-      # alt - k: ${yabai} -m window --focus north
-      # alt - h: ${yabai} -m window --focus west
-      # alt - l: ${yabai} -m window --focus east
+      #  -- Focus to window --
+      alt - j: ${yabai} -m window --focus south
+      alt - k: ${yabai} -m window --focus north
+      alt - h: ${yabai} -m window --focus west
+      alt - l: ${yabai} -m window --focus east
 
-      # # -- Move window --
-      # shift + alt - j: ${yabai} -m window --swap south
-      # shift + alt - k: ${yabai} -m window --swap north
-      # shift + alt - h: ${yabai} -m window --swap west
-      # shift + alt - l: ${yabai} -m window --swap east
+      # -- Move window --
+      shift + alt - j: ${yabai} -m window --swap south
+      shift + alt - k: ${yabai} -m window --swap north
+      shift + alt - h: ${yabai} -m window --swap west
+      shift + alt - l: ${yabai} -m window --swap east
 
-      # # Move window to display
-      # shift + alt - s: ${yabai} -m window --display west; ${yabai} -m display --focus west;
-      # shift + alt - g: ${yabai} -m window --display east; ${yabai} -m display --focus east;
+      # Move window to display
+      shift + alt - s: ${yabai} -m window --display west; ${yabai} -m display --focus west;
+      shift + alt - g: ${yabai} -m window --display east; ${yabai} -m display --focus east;
 
-      # # -- Modifying the Layout --
+      # -- Modifying the Layout --
 
-      # # rotate layout clockwise
-      # shift + alt - r: ${yabai} -m space --rotate 270
+      # rotate layout clockwise
+      shift + alt - r: ${yabai} -m space --rotate 270
 
-      # # flip along y-axis
-      # shift + alt - y: ${yabai} -m space --mirror y-axis
+      # flip along y-axis
+      shift + alt - y: ${yabai} -m space --mirror y-axis
 
-      # # flip along x-axis
-      # shift + alt - x: ${yabai} -m space --mirror x-axis
+      # flip along x-axis
+      shift + alt - x: ${yabai} -m space --mirror x-axis
 
-      # # toggle window float
-      # shift + alt - t: ${yabai} -m window --toggle float --grid 4:4:1:1:2:2
+      # toggle window float
+      shift + alt - t: ${yabai} -m window --toggle float --grid 4:4:1:1:2:2
 
-      # # maximize a window
-      # shift + alt - m: ${yabai} -m window --toggle zoom-fullscreen
+      # maximize a window
+      shift + alt - m: ${yabai} -m window --toggle zoom-fullscreen
 
-      # # balance out tree of windows (resize to occupy same area)
-      # shift + alt - e: ${yabai} -m space --balance
+      # balance out tree of windows (resize to occupy same area)
+      shift + alt - e: ${yabai} -m space --balance
 
-      # # -- move window to prev/next desktop --
-      # shift + alt - p: ${yabai} -m window --space prev;
-      # shift + alt - n: ${yabai} -m window --space next;
+      # -- move window to prev/next desktop --
+      shift + alt - p: ${yabai} -m window --space prev;
+      shift + alt - n: ${yabai} -m window --space next;
 
-      # # show all scratchpad windows if inaccessible due to yabai restart or crash
-      # cmd + alt - r: ${yabai} -m window --scratchpad recover
+      # show all scratchpad windows if inaccessible due to yabai restart or crash
+      cmd + alt - r: ${yabai} -m window --scratchpad recover
 
-      # # colmak m(usic)
-      # cmd + alt - m: ${yabai} -m window --toggle spotify || open  -a Spotify
-      # # colmak d(iscord)
-      # cmd + alt - d: ${yabai} -m window --toggle vesktop || open -a Vesktop
-      # # colmak k(akaotalk)
-      # cmd + alt - k: ${yabai} -m window --toggle kakaotalk || open -a KakaoTalk
-      # # colmak s(lack)
-      # cmd + alt - s: ${yabai} -m window --toggle slack || open -a Slack
-      # # colmak a(kiflow)
-      # cmd + alt - a: ${yabai} -m window --toggle akiflow || open -a Akiflow
-      # # colmak l(inear)
-      # cmd + alt - l: ${yabai} -m window --toggle linear || open -a Linear
+      # colmak m(usic)
+      cmd + alt - m: ${yabai} -m window --toggle spotify || open  -a Spotify
+      # colmak d(iscord)
+      cmd + alt - d: ${yabai} -m window --toggle vesktop || open -a Vesktop
+      # colmak k(akaotalk)
+      cmd + alt - k: ${yabai} -m window --toggle kakaotalk || open -a KakaoTalk
+      # colmak s(lack)
+      cmd + alt - s: ${yabai} -m window --toggle slack || open -a Slack
+      # colmak a(kiflow)
+      cmd + alt - a: ${yabai} -m window --toggle akiflow || open -a Akiflow
+      # colmak l(inear)
+      cmd + alt - l: ${yabai} -m window --toggle linear || open -a Linear
 
-      # # colmak o(pen)
-      # cmd + alt - 0x29: ${yabai} -m window --toggle custom
-      # # colmak ; (register)
-      # cmd + alt - 0x23: ${yabai} -m window --scratchpad custom
+      # colmak o(pen)
+      cmd + alt - 0x29: ${yabai} -m window --toggle custom
+      # colmak ; (register)
+      cmd + alt - 0x23: ${yabai} -m window --scratchpad custom
 
-      # # colmak g(rid) set grid
-      # cmd + alt - g: ${yabai} -m window --grid 11:11:1:1:9:9
+      # colmak g(rid) set grid
+      cmd + alt - g: ${yabai} -m window --grid 11:11:1:1:9:9
 
       # For custom keyboard
       # See https://github.com/gangjun06/keymaps

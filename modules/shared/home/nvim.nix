@@ -1,10 +1,10 @@
-{...}: {
+{userConfig, config,...}: {
   programs.neovim = {
     enable = true;
   };
 
   home.file.".config/nvim" = {
-    source = ../files/nvim;
+    source = config.lib.file.mkOutOfStoreSymlink "${userConfig.nixConfig}/modules/shared/files/nvim";
     recursive = true;
   };
 }

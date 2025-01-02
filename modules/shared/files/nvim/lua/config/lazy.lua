@@ -10,14 +10,11 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   -- ~/.config/lazy-lock.json for prevent read-only
-  lockfile = vim.fn.stdpath("config") .. "/../lazy-lock.json", -- lockfile generated after running update.
+  -- lockfile = vim.fn.stdpath("config") .. "/../lazy-lock.json", -- lockfile generated after running update.
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- { import = "lazyvim.plugins.extras.lang.json" },
-    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
     { import = "plugins" },
   },
