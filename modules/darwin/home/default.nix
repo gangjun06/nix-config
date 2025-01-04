@@ -32,11 +32,6 @@ in {
   # ----------
 
   home.packages = with pkgs; [
-    lua54Packages.lua
-    # <sketchybar>
-    sketchybar-app-font
-    # </sketchybar>
-
     # Development
     fnm # node version manager
 

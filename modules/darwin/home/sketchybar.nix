@@ -1,5 +1,11 @@
 {pkgs, ...}: {
   # <sketchybar>
+  home.packages = with pkgs; [
+    lua54Packages.lua
+    sketchybar-app-font
+    sbar-lua
+  ];
+
   home.file.".config/sketchybar" = {
     source = ../files/sketchybar;
     recursive = true;
