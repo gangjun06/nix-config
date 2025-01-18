@@ -43,6 +43,14 @@ in {
       # </wallpaper>
 
       "ghostty"
+
+      # <zen-browser>
+      "zen-browser"
+      # </zen-browser>
+
+      "minecraft"
+
+      "freecad"
     ];
   };
 }

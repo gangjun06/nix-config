@@ -19,6 +19,7 @@ in {
     ./wallpaper.nix
     ./hammerspoon.nix
     ./karabiner
+    ./zen-browser.nix
 
     ../../shared/home/btop.nix
     ../../shared/home/shell.nix
