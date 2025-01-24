@@ -22,6 +22,8 @@ in {
       "switchaudio-osx"
       "nowplaying-cli"
       # </sketchybar>
+
+      "hashcat"
     ];
 
     casks = [
