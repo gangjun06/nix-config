@@ -13,5 +13,6 @@
     ./programs/defaults.nix
     ./programs/homerow.nix
     ./programs/wallpaper.nix
+    ./programs/karabiner.nix
   ];
 }
