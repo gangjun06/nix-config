@@ -4,6 +4,7 @@
   ...
 } @ inputs: let
   inherit (flake-utils.lib) mkApp;
+  homeManagerShared = import ./home-manager;
 in {
   mkDarwinConfig = {
     profile ? "default",
@@ -13,6 +14,7 @@ in {
     darwinConfigurations.${profile} = inputs.nix-darwin.lib.darwinSystem {
       inherit system;
       modules = [
+        homeManagerShared
         {
           nixpkgs.overlays = [self.overlays.default];
         }

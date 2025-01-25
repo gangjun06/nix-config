@@ -16,7 +16,6 @@ in {
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
     ./sketchybar.nix
-    ./wallpaper.nix
     ./hammerspoon.nix
     ./karabiner
     ./zen-browser.nix
@@ -31,6 +30,8 @@ in {
   ];
 
   # ----------
+
+  darwin.wallpaper.path = "${pkgs.wallpaper}/wallpapers/black-hole.png";
 
   home.packages = with pkgs; [
     # Development
