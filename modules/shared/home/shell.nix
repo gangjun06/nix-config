@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  userConfig,
+  ...
+}: {
   home.file = {
     ".config/nushell" = {
-      source = ../files/nushell;
+      source = config.lib.file.mkOutOfStoreSymlink "${userConfig.nixConfig}/modules/shared/files/nushell";
       recursive = true;
     };
   };
