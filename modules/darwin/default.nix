@@ -44,6 +44,7 @@ in {
   fonts.packages = with pkgs; [
     cascadia-code
     nerd-fonts.jetbrains-mono
+    pretendard
   ];
 
   # Necessary for using flakes on this system.

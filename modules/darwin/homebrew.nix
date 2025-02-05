@@ -53,6 +53,8 @@ in {
       "minecraft"
 
       "freecad"
+
+      "figma"
     ];
   };
 }
