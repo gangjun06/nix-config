@@ -43,6 +43,10 @@ in {
 
     fortune
 
+    direnv
+
+    act # Run github actions locally
+
     # GUI Apps - Chat
     discord
 
