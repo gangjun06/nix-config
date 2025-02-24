@@ -53,6 +53,7 @@ in {
     # GUI Apps - Study
     # pkgs.anki
     # pkgs.vlc
+    fastlane
   ];
 
   programs.home-manager.enable = true;
