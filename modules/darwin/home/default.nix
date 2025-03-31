@@ -54,6 +54,11 @@ in {
     # pkgs.anki
     # pkgs.vlc
     fastlane
+
+    figlet
+    lolcat
+
+    gitify
   ];
 
   programs.home-manager.enable = true;

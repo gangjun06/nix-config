@@ -27,6 +27,8 @@ in {
     ];
 
     casks = [
+      "cursor"
+
       "lookaway"
       "kicad" # cad app
 
