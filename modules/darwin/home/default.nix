@@ -59,6 +59,8 @@ in {
     lolcat
 
     gitify
+
+    pgadmin4-desktopmode
   ];
 
   programs.home-manager.enable = true;
