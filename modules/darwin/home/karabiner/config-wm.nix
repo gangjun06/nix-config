@@ -82,8 +82,8 @@ in {
       (mkComboWithCmd ["shift"] ["f13" "l"] "${yabai} -m window --swap east")
       (mkComboWithCmd ["option"] ["f13" "l"] "${yabai} -m window --stack east")
 
-      (mkComboWithCmd [] ["f13" "n"] "${yabai} -m window --rotate 270")
-      (mkComboWithCmd ["shift"] ["f13" "n"] "${yabai} -m window --rotate 90")
+      (mkComboWithCmd [] ["f13" "n"] "${yabai} -m window --space 270")
+      (mkComboWithCmd ["shift"] ["f13" "n"] "${yabai} -m window --space 90")
 
       (mkComboWithCmd [] ["f13" "m"] "${yabai} -m window --resize left:-150:0")
       (mkComboWithCmd ["shift"] ["f13" "m"] "${yabai} -m window --resize left:150:0")
