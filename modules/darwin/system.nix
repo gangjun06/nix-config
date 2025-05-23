@@ -6,6 +6,7 @@
 }: let
   inherit (userConfig) home;
 in {
+  system.primaryUser = "gangjun";
   system.defaults = {
     CustomUserPreferences = {
       "com.apple.WindowManager" = {

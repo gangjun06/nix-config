@@ -14,7 +14,7 @@ in {
   home.stateVersion = "24.11";
 
   imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
     ./sketchybar.nix
     ./hammerspoon.nix
     ./karabiner

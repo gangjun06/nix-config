@@ -6,10 +6,11 @@ sbar.exec(
     "killall input_monitoring >/dev/null; $CONFIG_DIR/helpers/event_providers/input_monitoring/bin/input_monitoring input_method_change 0.2")
 
 local TextMAP = {
-    ["default"] = "En",
-    ["org.youknowone.inputmethod.Gureum.han2"] = "Ko",
-    ["org.youknowone.inputmethod.Gureum.han3moa-semoe-2018i"] = "Ko2",
-    ["com.apple.inputmethod.Japanese"] = "Ja"
+    ["default"] = "EN",
+    ["io.github.colemakmods.keyboardlayout.colemakdh.colemakdhmatrix-extended"] = "EN2",
+    ["org.youknowone.inputmethod.Gureum.han2"] = "KO",
+    ["org.youknowone.inputmethod.Gureum.han3moa-semoe-2018i"] = "KO2",
+    ["com.apple.inputmethod.Japanese"] = "JA"
 }
 
 local input_text = sbar.add("item", "widgets.input1", {
