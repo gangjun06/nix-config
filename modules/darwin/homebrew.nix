@@ -59,6 +59,8 @@ in {
       "figma"
 
       "tailscale"
+
+      "bluetility"
     ];
   };
 }
