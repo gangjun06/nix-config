@@ -9,9 +9,14 @@ with karabiner-lib; {
           key_code = "left_shift";
           modifiers = ["left_command" "left_control" "left_option"];
         };
-        to_if_alone = wrapAsList {
-          key_code = "escape";
-        };
+        to_if_alone = [
+          {
+            key_code = "escape";
+          }
+          {
+            select_input_source.language = "en";
+          }
+        ];
       })
       (mkManipulator {
         description = "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+;";
