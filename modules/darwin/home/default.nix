@@ -23,7 +23,6 @@ in {
     ../../shared/home/btop.nix
     ../../shared/home/shell.nix
     ../../shared/home/spicetify.nix
-    ../../shared/home/wezterm.nix
     ../../shared/home/nvim.nix
     ../../shared/home/tmux.nix
     ../../shared/home/ghostty.nix
