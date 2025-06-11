@@ -61,6 +61,8 @@ in {
       "tailscale"
 
       "bluetility"
+
+      "discord"
     ];
   };
 }

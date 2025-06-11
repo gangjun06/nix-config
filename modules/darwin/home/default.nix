@@ -46,9 +46,6 @@ in {
 
     act # Run github actions locally
 
-    # GUI Apps - Chat
-    discord
-
     # GUI Apps - Study
     # pkgs.anki
     # pkgs.vlc
