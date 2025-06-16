@@ -42,7 +42,7 @@ in {
       window_animation_duration = 0.3;
       split_ratio = 0.50;
       auto_balance = "off";
-      mouse_modifier = "alt";
+      mouse_modifier = "ctrl";
       mouse_action1 = "move";
       mouse_action2 = "resize";
       mouse_drop_action = "swap";
@@ -75,6 +75,7 @@ in {
       yabai -m rule --add app="CleanShot X" manage=off mouse_follows_focus=off
       yabai -m rule --add app="ChatGPT" manage=off mouse_follows_focus=off
       yabai -m rule --add app="qmk-display" manage=off
+      yabai -m rule --add app="Session" manage=off
 
       # mark window as scratchpad using rule and set size (scratchpad windows are manage=off automatically)
       yabai -m rule --add app="^카카오톡$" scratchpad=kakaotalk
