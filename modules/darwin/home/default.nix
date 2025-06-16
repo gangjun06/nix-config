@@ -57,6 +57,8 @@ in {
     gitify
 
     pgadmin4-desktopmode
+
+    graphite-cli
   ];
 
   programs.home-manager.enable = true;
