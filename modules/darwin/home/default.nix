@@ -59,6 +59,8 @@ in {
     pgadmin4-desktopmode
 
     graphite-cli
+
+    eza
   ];
 
   programs.home-manager.enable = true;
