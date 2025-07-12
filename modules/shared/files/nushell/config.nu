@@ -125,9 +125,9 @@ $env.PATH = ($env.PATH |
 # Apply git alias
 source ~/.config/nushell/git-alias.nu
 
-# fnm
-fnm env --json | from json | load-env
-$env.PATH = ($env.PATH | prepend $"($env.FNM_MULTISHELL_PATH)/bin")
+# # fnm
+# fnm env --json | from json | load-env
+# $env.PATH = ($env.PATH | prepend $"($env.FNM_MULTISHELL_PATH)/bin")
 
 # Nix integration
 source ~/.config/nushell/apply-nix.nu
@@ -137,3 +137,5 @@ $env.PATH = ($env.PATH |
   prepend "/run/current-system/sw/bin" |
   prepend $"($env.HOME)/.nix-profile/bin"
 )
+# $env.PATH = ($env.PATH | prepend $env_backup)
+$env.PATH = ($env.PATH | prepend "/Users/gangjun/.bun/bin")

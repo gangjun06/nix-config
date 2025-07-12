@@ -25,5 +25,6 @@ if ("/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" | path exists) {
         }
     } | compact)
 
-    $env.PATH = ($env.PATH | append $path_diff_arr)
+    $env.PATH = ($env.PATH | prepend "/tmp/divider")
+    $env.PATH = ($env.PATH | prepend $path_diff_arr)
 }
