@@ -20,15 +20,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins
 plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions)
-plugins+=(zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=/Users/gangjun/go/bin:/Users/gangjun/.local/share/fig/plugins/git-open:/Users/gangjun/miniforge3/condabin:/opt/homebrew/opt/mysql-client/bin:/opt/homebrew/opt/pcsc-lite/sbin:/opt/homebrew/opt/pcsc-lite/bin:/Users/gangjun/.nvm/versions/node/v16.13.0/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/gangjun/.cargo/bin:/Users/gangjun/.fig/bin:/Users/gangjun/.local/bin:/Users/gangjun/.yarn/bin
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH=/Users/gangjun/go/bin:/Users/gangjun/.local/share/fig/plugins/git-open:/Users/gangjun/miniforge3/condabin:/opt/homebrew/opt/mysql-client/bin:/opt/homebrew/opt/pcsc-lite/sbin:/opt/homebrew/opt/pcsc-lite/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/gangjun/.cargo/bin:/Users/gangjun/.fig/bin:/Users/gangjun/.local/bin:/Users/gangjun/.yarn/bin
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -108,27 +103,8 @@ export HELIX_RUNTIME=~/src/helix/runtime
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 PATH=~/.console-ninja/.bin:$PATH
-NVM_AUTO_USE=true
 
 autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install --silent
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use --silent
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    nvm use default --silent
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
