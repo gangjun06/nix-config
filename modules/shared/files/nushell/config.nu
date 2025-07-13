@@ -119,7 +119,8 @@ $env.PATH = ($env.PATH |
   prepend $"($env.PNPM_HOME)" |
   prepend "/opt/homebrew/opt/curl/bin" |
   prepend "/Users/gangjun/.spicetify" |
-  prepend "/Users/gangjun/Library/Python/3.9/bin"
+  prepend "/Users/gangjun/Library/Python/3.9/bin" |
+  prepend "/Users/gangjun/.claude/local"
 )
 
 # Apply git alias

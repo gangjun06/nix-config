@@ -2,10 +2,14 @@ return {
   {
     "williamboman/mason.nvim",
     opts = { ensure_installed = { "prettier" } },
+    -- https://github.com/LazyVim/LazyVim/issues/6039#issuecomment-2856227817
+    version = "^1.0.0",
   },
 
   {
     "williamboman/mason-lspconfig.nvim",
+    -- https://github.com/LazyVim/LazyVim/issues/6039#issuecomment-2856227817
+    version = "^1.0.0",
     opts = {
       -- ensure_installed = { "svelte" },
     },
