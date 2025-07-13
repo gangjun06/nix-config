@@ -67,7 +67,8 @@ in {
       export PATH=$PATH:$ANDROID_HOME/tools
       export PATH=$PATH:$ANDROID_HOME/tools/bin
       export PATH=$PATH:$ANDROID_HOME/platform-tools
-      export PATH=$HOME/.claude/local/claude:$PATH
+      export PATH=$HOME/.claude/local:$PATH
+      export PATH=$HOME/.cargo/bin:$PATH
 
       # Fix Xcode path for Expo compatibility
       export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
@@ -99,7 +100,8 @@ in {
       set -gx PATH $PATH $ANDROID_HOME/tools
       set -gx PATH $PATH $ANDROID_HOME/tools/bin
       set -gx PATH $PATH $ANDROID_HOME/platform-tools
-      set -gx PATH $HOME/.claude/local/claude $PATH
+      set -gx PATH $HOME/.claude/local $PATH
+      set -gx PATH $HOME/.cargo/bin $PATH
 
       # Fix Xcode path for Expo compatibility
       set -gx DEVELOPER_DIR "/Applications/Xcode.app/Contents/Developer"

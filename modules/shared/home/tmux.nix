@@ -10,7 +10,7 @@
 
   programs.tmux = {
     enable = true;
-    shell = "${pkgs.nushell}/bin/nu";
+    shell = "${pkgs.fish}/bin/fish";
     terminal = "xterm-256color";
     extraConfig = ''
       source-file ${userConfig.home}/.config/tmux-custom-config/tmux.conf

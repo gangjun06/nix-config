@@ -15,3 +15,4 @@ mouse-hide-while-typing = true
 font-size = 16
 
 command = /etc/profiles/per-user/gangjun/bin/fish --login --interactive
+keybind = shift+enter=text:\n
