@@ -1,0 +1,159 @@
+export GPG_TTY=$(tty)
+
+# Download Znap, if it's not there yet.
+[[ -f ~/git/zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/git/zsh-snap
+
+source ~/git/zsh-snap/znap.zsh  # Start Znap
+
+# p10k
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# oh-my-zsh installation path
+export ZSH=$HOME/.oh-my-zsh
+
+# theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Plugins
+plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions)
+plugins+=(zsh-nvm)
+
+source $ZSH/oh-my-zsh.sh
+
+export PATH=/Users/gangjun/go/bin:/Users/gangjun/.local/share/fig/plugins/git-open:/Users/gangjun/miniforge3/condabin:/opt/homebrew/opt/mysql-client/bin:/opt/homebrew/opt/pcsc-lite/sbin:/opt/homebrew/opt/pcsc-lite/bin:/Users/gangjun/.nvm/versions/node/v16.13.0/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/gangjun/.cargo/bin:/Users/gangjun/.fig/bin:/Users/gangjun/.local/bin:/Users/gangjun/.yarn/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+
+export PATH=$PATH:/Users/gangjun/.spicetify
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/Users/gangjun/Library/Python/3.9/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/gangjun/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# custom bins
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# brew
+export HOMEBREW_EDITOR=nvim
+
+# ----------------------------------
+# zoxide, Smarter cd command | https://github.com/nanotee/zoxide.vim
+eval "$(zoxide init zsh)"
+
+# ----------------------------------
+# exa, A modern replacement for 'ls'.
+
+# general use
+alias ls='eza --icons'                                                               # ls
+alias l='eza -lbF --git --icons'                                             # list, size, type, git
+alias ll='eza -lbGF --git --icons'                                           # long list
+alias llm='eza -lbGd --icons --git --sort=modified'                          # long list, modified date sort
+alias la='eza -lbhHgUmuSa --time-style=default --icons --git --color-scale'  # all list
+alias lx='eza -lbhHgUmuSa@ --time-style=default ---icons -git --color-scale' # all + extended list
+
+# specialty views
+alias lS='eza -1 --icons'                                                    # one column, just names
+alias lt='eza --tree --level=2 --icons'                                      # tree
+
+alias b='bat'
+alias lg='lazygit'
+
+alias q="exit"
+alias vim=nvim
+alias v=nvim
+
+alias y=yarn
+
+alias yr="yarn run"
+alias yrd="yarn run dev"
+alias yrb="yarn run build"
+alias yrt="yarn run test"
+
+alias ya="yarn add"
+alias yd="yarn remove"
+
+alias pn=pnpm
+alias pni="pnpm install"
+alias pna="pnpm add"
+alias pnr="pnpm run"
+alias pnrd="pnpm run dev"
+
+# bun completions
+[ -s "/Users/gangjun/.bun/_bun" ] && source "/Users/gangjun/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export HELIX_RUNTIME=~/src/helix/runtime
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+PATH=~/.console-ninja/.bin:$PATH
+NVM_AUTO_USE=true
+
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install --silent
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use --silent
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    nvm use default --silent
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    unset __ETC_PROFILE_NIX_SOURCED
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
+
+export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
+
+# Nix
+export PATH="/etc/profiles/per-user/gangjun/bin:$PATH"
+export PATH="/run/current-system/sw/bin:$PATH"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$HOME/.claude/local/claude:$PATH
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Task Master aliases added on 7/1/2025
+alias tm='task-master'
+alias taskmaster='task-master'

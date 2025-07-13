@@ -4,50 +4,28 @@
   userConfig,
   ...
 }: {
-  home.file = {
-    ".config/nushell" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${userConfig.nixConfig}/modules/shared/files/nushell";
-      recursive = true;
-    };
+  # Symlink to zsh config files
+  home.file.".zshrc" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${userConfig.nixConfig}/modules/darwin/files/zsh/zshrc";
   };
 
-  programs.nushell = {
+  home.file.".zshenv" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${userConfig.nixConfig}/modules/darwin/files/zsh/zshenv";
+  };
+
+  programs.zsh = {
     enable = true;
-    configFile.source = ../files/nushell/config.nu;
-
-    shellAliases = {
-      mac-open = "/usr/bin/open";
-
-      b = "bat";
-      lg = "lazygit";
-
-      q = "exit";
-      vim = "nvim";
-      v = "nvim";
-
-      y = "yarn";
-
-      yr = "yarn run";
-      yrd = "yarn run dev";
-      yrb = "yarn run build";
-      yrt = "yarn run test";
-
-      ya = "yarn add";
-      yd = "yarn remove";
-
-      pn = "pnpm";
-      pni = "pnpm install";
-      pna = "pnpm add";
-      pnr = "pnpm run";
-      pnrd = "pnpm run dev";
-    };
+    enableCompletion = false; # Let existing .zshrc handle completions
   };
 
+  # Enable carapace for zsh completions
   programs.carapace.enable = true;
-  programs.carapace.enableNushellIntegration = true;
+  programs.carapace.enableZshIntegration = true;
 
+  # Keep starship configuration
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       add_newline = true;
       format = "$all";
@@ -61,4 +39,16 @@
     };
   };
   catppuccin.starship.enable = true;
+
+  # Enable additional tools that were used with nushell
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 }

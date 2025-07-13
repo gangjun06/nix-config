@@ -19,7 +19,7 @@ in {
     name = username;
     home = home;
     isHidden = false;
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
     packages = [];
   };
 
