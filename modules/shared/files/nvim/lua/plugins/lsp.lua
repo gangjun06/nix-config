@@ -37,6 +37,47 @@ return {
         eslint = {
           -- Simplify root_patterns as it changes root_dir in monorepos with default config
           root_dir = require("lspconfig").util.root_pattern(".git"),
+          -- @antfu/eslint-config customizations
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+            "vue",
+            "html",
+            "markdown",
+            "json",
+            "jsonc",
+            "yaml",
+            "toml",
+            "xml",
+            "gql",
+            "graphql",
+            "astro",
+            "svelte",
+            "css",
+            "less",
+            "scss",
+            "pcss",
+            "postcss"
+          },
+          settings = {
+            -- Silent the stylistic rules in you IDE, but still auto fix them
+            rulesCustomizations = {
+              { rule = 'style/*', severity = 'off', fixable = true },
+              { rule = 'format/*', severity = 'off', fixable = true },
+              { rule = '*-indent', severity = 'off', fixable = true },
+              { rule = '*-spacing', severity = 'off', fixable = true },
+              { rule = '*-spaces', severity = 'off', fixable = true },
+              { rule = '*-order', severity = 'off', fixable = true },
+              { rule = '*-dangle', severity = 'off', fixable = true },
+              { rule = '*-newline', severity = 'off', fixable = true },
+              { rule = '*quotes', severity = 'off', fixable = true },
+              { rule = '*semi', severity = 'off', fixable = true },
+            },
+          },
         },
         tailwindcss = {
           -- Simplify root_patterns as it changes root_dir in monorepos with default config
@@ -56,9 +97,14 @@ return {
       -- The below may no longer be needed now that LazyVim has been updated to v10
       setup = {
         eslint = function()
-          require("lazyvim.util").lsp.on_attach(function(client)
+          require("lazyvim.util").lsp.on_attach(function(client, bufnr)
             if client.name == "eslint" then
               client.server_capabilities.documentFormattingProvider = true
+              -- Format on save with EslintFixAll
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                command = "EslintFixAll",
+              })
             elseif client.name == "tsserver" then
               client.server_capabilities.documentFormattingProvider = false
             end
