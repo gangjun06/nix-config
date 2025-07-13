@@ -19,9 +19,21 @@ in {
     name = username;
     home = home;
     isHidden = false;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     packages = [];
   };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableAutosuggestions = true;
+    enableFastSyntaxHighlighting = true;
+    enableFzfHistory = true;
+    enableFzfCompletion = true;
+  };
+  programs.fish.enable = true;
+
+  environment.shells = with pkgs; [zsh fish];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -49,9 +61,6 @@ in {
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
-
-  # Enable alternative shell support in nix-darwin.
-  programs.zsh.enable = true;
 
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew

@@ -13,3 +13,5 @@ window-padding-y = 10
 macos-option-as-alt = true
 mouse-hide-while-typing = true
 font-size = 16
+
+command = /etc/profiles/per-user/gangjun/bin/fish --login --interactive

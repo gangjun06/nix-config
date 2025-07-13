@@ -19,9 +19,9 @@ in {
     ./hammerspoon.nix
     ./karabiner
     ./zen-browser.nix
+    ./shell.nix
 
     ../../shared/home/btop.nix
-    ../../shared/home/shell.nix
     ../../shared/home/spicetify.nix
     ../../shared/home/nvim.nix
     ../../shared/home/tmux.nix
@@ -30,7 +30,7 @@ in {
 
   # ----------
 
-  darwin.wallpaper.path = "${pkgs.wallpaper}/wallpapers/black-hole.png";
+  # darwin.wallpaper.path = "${pkgs.wallpaper}/wallpapers/black-hole.png";
 
   home.packages = with pkgs; [
     # Development

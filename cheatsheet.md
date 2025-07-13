@@ -245,7 +245,7 @@ Dockerfile, docker-compose.yml 파일에서 LSP 지원
 ```
 <leader>sr        검색 및 바꾸기
 <leader>sw        현재 단어 검색 및 바꾸기
-<leader>sf        현재 파일에서 검색 및 바꾸기
+<leader>sf        현재 파일에서 **검색** 및 바꾸기
 <leader>sc        비주얼 선택 검색 및 바꾸기
 <leader>sg        검색 및 바꾸기 재시작
 ```
@@ -407,3 +407,7 @@ sa/sd/sr          Surround 명령어들 (VSCode에서도 동일)
 :lua vim.diagnostic.reset()     진단 리셋
 :lua vim.diagnostic.show()      진단 표시
 ```
+
+
+
+

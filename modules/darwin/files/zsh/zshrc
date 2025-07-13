@@ -133,3 +133,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Task Master aliases added on 7/1/2025
 alias tm='task-master'
 alias taskmaster='task-master'
+
+# fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
