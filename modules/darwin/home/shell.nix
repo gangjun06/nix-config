@@ -73,9 +73,25 @@ in {
       # Fix Xcode path for Expo compatibility
       export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
 
-      eval "$(fnm env --use-on-cd --shell zsh)"
+      eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --shell zsh)"
 
       $GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration
+    '';
+
+    envExtra = ''
+      # https://github.com/anthropics/claude-code/issues/2110
+
+      # also need mkdir -p ~/.config/direnv
+      # touch ~/.config/direnv/direnv.toml
+      # because there is a bug that causes DIRENV_LOG_FORMAT to be ignore if the config
+      # file does not exist
+
+      if command -v direnv >/dev/null; then
+        if [[ ! -z "$CLAUDECODE" ]]; then
+          eval "$(direnv hook zsh)"
+          eval "$(DIRENV_LOG_FORMAT= direnv export zsh)"  # Need to trigger "hook" manually
+        fi
+      fi
     '';
   };
 
@@ -106,7 +122,7 @@ in {
       # Fix Xcode path for Expo compatibility
       set -gx DEVELOPER_DIR "/Applications/Xcode.app/Contents/Developer"
 
-      fnm env --use-on-cd --shell fish | source
+      fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --shell fish | source
     '';
 
     # Functions
