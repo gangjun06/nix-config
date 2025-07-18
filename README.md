@@ -1,18 +1,19 @@
 # Nix Darwin Configuration
 
-A declarative macOS system configuration using [nix-darwin](https://github.com/LnL7/nix-darwin) and [home-manager](https://github.com/nix-community/home-manager). This repository provides a complete development environment with tiling window management, modern terminal setup, and comprehensive development tools.
+A declarative macOS system configuration using [nix-darwin](https://github.com/LnL7/nix-darwin) and [home-manager](https://github.com/nix-community/home-manager).
+![Window Management Screenshot](./screenshot.png)
 
 ## Overview
 
 This configuration transforms macOS into a keyboard-driven development powerhouse featuring:
 
-- **Catppuccin Theme**: Consistent color scheme across all applications
-- **Window Management**: [Yabai](https://github.com/koekeishiya/yabai) + [skhd](https://github.com/koekeishiya/skhd) for tiling window management
-- **Status Bar**: [Sketchybar](https://github.com/FelixKratz/SketchyBar) with custom Lua configuration
-- **Terminal**: [Ghostty](https://ghostty.org/) with [tmux](https://github.com/tmux/tmux)
-- **Shell**: [Fish shell](https://fishshell.com) with custom prompt ([Starship](https://starship.rs/))
-- **Editor**: Neovim with [LazyVim](https://www.lazyvim.org/) configuration
-- **Development Tools**: Node.js (via [fnm](https://github.com/Schniz/fnm)), Git, Docker, and more
+- **Color schema**: [Catppuccin](https://github.com/catppuccin/catppuccin)
+- **Window Management**: [Yabai](https://github.com/koekeishiya/yabai) + [skhd](https://github.com/koekeishiya/skhd)
+- **Status Bar**: [Sketchybar](https://github.com/FelixKratz/SketchyBar)
+- **Terminal**: [Ghostty](https://ghostty.org/) + [tmux](https://github.com/tmux/tmux)
+- **Shell**: [Fish shell](https://fishshell.com) ([Starship](https://starship.rs/))
+- **Editor**: [Neovim](https://neovim.io) ([LazyVim](https://www.lazyvim.org/))
+- **Development Tools**
 
 ## Quick Start
 
