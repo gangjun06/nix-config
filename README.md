@@ -1,6 +1,7 @@
 # Nix Darwin Configuration
 
 A declarative macOS system configuration using [nix-darwin](https://github.com/LnL7/nix-darwin) and [home-manager](https://github.com/nix-community/home-manager).
+
 ![Window Management Screenshot](./screenshot.png)
 
 ## Overview
@@ -56,51 +57,6 @@ darwin-rebuild switch --flake .#kj-default
 ├── overlays/                 # Package overlays
 └── pkgs/                     # Custom packages
 ```
-
-## Key Features
-
-### Window Management
-
-The configuration uses a sophisticated keyboard-driven window management system:
-
-- **Left hand controls**: Workspace switching (Q-V keys)
-- **Right hand controls**: Window focus and movement (H-L keys)
-- **Modifiers**: Shift for moving, Alt for stacking operations
-
-See the [keyboard mapping section](#keyboard-wm-keymap) below for detailed shortcuts.
-
-### Development Environment
-
-- **Multiple Language Support**: JavaScript/TypeScript, Python, Rust, Go
-- **AI-Powered Coding**: GitHub Copilot and Claude.nvim integration
-- **Modern Tooling**: ESLint, Prettier, TypeScript LSP
-- **Git Workflow**: Extensive aliases and integrations
-
-### Terminal & Shell
-
-- **Ghostty Terminal**: GPU-accelerated terminal with Catppuccin theme
-- **Fish Shell**: Modern shell with autosuggestions and completions
-- **Tmux**: Terminal multiplexer with custom status bar
-- **Starship Prompt**: Fast, customizable prompt
-
-## Configuration
-
-### Customization
-
-The main user configuration is centralized in `modules/darwin/home/default.nix`. Key areas:
-
-- **Packages**: Add new packages to `modules/shared/home/packages.nix`
-- **Shell**: Configure shell in `modules/darwin/home/shell.nix`
-- **Git**: Modify aliases in `modules/shared/home/git-aliases.nix`
-- **Neovim**: Edit plugins in `modules/shared/files/nvim/lua/plugins/`
-
-### Theme
-
-The entire system uses the [Catppuccin](https://github.com/catppuccin/catppuccin) color scheme (Macchiato variant) for visual consistency across all applications.
-
-## Documentation
-
-- [CLAUDE.md](./CLAUDE.md) - AI assistant instructions and project context
 
 ## Keyboard WM Keymap
 
