@@ -24,6 +24,10 @@ in {
       # </sketchybar>
 
       "hashcat"
+      "luarocks"
+
+      # <nvim>
+      "pngpaste"
     ];
 
     casks = [

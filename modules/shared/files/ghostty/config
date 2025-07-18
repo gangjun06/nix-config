@@ -1,7 +1,7 @@
 theme = catppuccin-mocha
 
-background-opacity = 0.85
-background-blur-radius = 40
+background-opacity = 0.70
+background-blur-radius = 50
 
 # macOS specific features
 macos-titlebar-style = hidden
@@ -15,4 +15,5 @@ mouse-hide-while-typing = true
 font-size = 16
 
 command = /etc/profiles/per-user/gangjun/bin/fish --login --interactive
+keybind = shift+enter=text:\n
 keybind = shift+enter=text:\n

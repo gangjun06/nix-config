@@ -75,6 +75,13 @@ in {
 
       eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --shell zsh)"
 
+      # Poetry completions for zsh
+      mkdir -p ~/.zfunc
+      if [[ ! -f ~/.zfunc/_poetry ]]; then
+        poetry completions zsh > ~/.zfunc/_poetry
+      fi
+      fpath+=~/.zfunc
+
       $GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration
     '';
 
@@ -123,6 +130,17 @@ in {
       set -gx DEVELOPER_DIR "/Applications/Xcode.app/Contents/Developer"
 
       fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --shell fish | source
+
+      # Poetry completions for fish
+      mkdir -p ~/.config/fish/completions
+      if not test -f ~/.config/fish/completions/poetry.fish
+        poetry completions fish > ~/.config/fish/completions/poetry.fish
+      end
+
+      # apply local serets
+      if test -f ~/.config/shell-secrets.fish
+        source ~/.config/shell-secrets.fish
+      end
     '';
 
     # Functions
