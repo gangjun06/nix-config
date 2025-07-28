@@ -22,21 +22,29 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
+
+    yazi.url = "github:sxyazi/yazi";
   };
 
   outputs = {
     self,
     nixpkgs,
     catppuccin,
+    yazi,
     ...
   } @ inputs: let
     lib = import ./lib inputs;
     inherit (lib) recursiveMergeAttrs mkDarwinConfig mkUserConfig;
+
+      importedOverlays = import ./overlays inputs;
   in
     recursiveMergeAttrs [
       {
         inherit lib;
-        overlays.default = import ./overlays inputs;
+        overlays = [
+            importedOverlays
+            yazi.overlays.default
+        ];
       }
       (mkDarwinConfig {
         profile = "kj-default";

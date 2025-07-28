@@ -26,6 +26,7 @@ in {
     ../../shared/home/nvim.nix
     ../../shared/home/tmux.nix
     ../../shared/home/ghostty.nix
+    ../../shared/home/yazi.nix
   ];
 
   # ----------

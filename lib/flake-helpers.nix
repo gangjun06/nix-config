@@ -16,7 +16,7 @@ in {
       modules = [
         homeManagerShared
         {
-          nixpkgs.overlays = [self.overlays.default];
+          nixpkgs.overlays = self.overlays;
         }
         (../. + "/hosts/${system}@${profile}")
       ];
