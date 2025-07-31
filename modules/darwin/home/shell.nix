@@ -70,6 +70,8 @@ in {
       export PATH=$HOME/.claude/local:$PATH
       export PATH=$HOME/.cargo/bin:$PATH
 
+      export XDG_CONFIG_HOME="$HOME/.config"
+
       # Fix Xcode path for Expo compatibility
       export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
 
@@ -125,6 +127,7 @@ in {
       set -gx PATH $PATH $ANDROID_HOME/platform-tools
       set -gx PATH $HOME/.claude/local $PATH
       set -gx PATH $HOME/.cargo/bin $PATH
+      set -gx XDG_CONFIG_HOME "$HOME/.config"
 
       # Fix Xcode path for Expo compatibility
       set -gx DEVELOPER_DIR "/Applications/Xcode.app/Contents/Developer"
