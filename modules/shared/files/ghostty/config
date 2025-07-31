@@ -16,4 +16,8 @@ font-size = 16
 
 command = /etc/profiles/per-user/gangjun/bin/fish --login --interactive
 keybind = shift+enter=text:\n
-keybind = shift+enter=text:\n
+
+keybind="cmd+alt+up=csi:1;7A"
+keybind="cmd+alt+down=csi:1;7B"
+keybind="cmd+alt+right=csi:1;7C"
+keybind="cmd+alt+left=csi:1;7D"
