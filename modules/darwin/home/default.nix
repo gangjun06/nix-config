@@ -22,6 +22,7 @@ in {
     ./shell.nix
 
     ../../shared/home/btop.nix
+    ../../shared/home/git.nix
     ../../shared/home/spicetify.nix
     ../../shared/home/nvim.nix
     ../../shared/home/tmux.nix
