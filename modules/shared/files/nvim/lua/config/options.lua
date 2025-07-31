@@ -18,6 +18,8 @@ opt.splitright = true
 opt.splitkeep = "cursor"
 opt.mouse = ""
 
+-- vim.g.lazyvim_picker = "snacks"
+
 opt.formatoptions:append({ "r" })
 
 vim.g.lazyvim_prettier_needs_config = false
