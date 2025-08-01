@@ -3,9 +3,12 @@
     enable = true;
     
     settings = {
+      disableStartupPopups = true;
       os = {
-        open = "nvim {{filename}}";
-        edit = "nvim {{filename}}";
+        editInTerminal = false;
+        open = "nvim --server /tmp/nvim-socket-$(tmux display -p '#{window_id}').pipe --remote {{filename}}; exit";
+        edit = "nvim --server /tmp/nvim-socket-$(tmux display -p '#{window_id}').pipe --remote +{{line}} {{filename}}; exit";
+        editAtLine = "nvim --server /tmp/nvim-socket-$(tmux display -p '#{window_id}').pipe --remote +{{line}} {{filename}}; exit";
       };
     };
   };

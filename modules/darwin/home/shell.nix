@@ -55,6 +55,8 @@
     pna = "pnpm add";
     pnr = "pnpm run";
     pnrd = "pnpm run dev";
+
+    nvim = "nvim --listen /tmp/nvim-socket-$(tmux display -p '#{window_id}').pipe";
   };
 in {
   programs.zsh = {
@@ -128,6 +130,10 @@ in {
       set -gx PATH $HOME/.claude/local $PATH
       set -gx PATH $HOME/.cargo/bin $PATH
       set -gx XDG_CONFIG_HOME "$HOME/.config"
+
+      set --export BUN_INSTALL "$HOME/.bun"
+      set --export PATH $BUN_INSTALL/bin $PATH
+
 
       # Fix Xcode path for Expo compatibility
       set -gx DEVELOPER_DIR "/Applications/Xcode.app/Contents/Developer"
