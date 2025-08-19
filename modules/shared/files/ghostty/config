@@ -1,13 +1,13 @@
 theme = catppuccin-mocha
 
-background-opacity = 0.70
+background-opacity = 0.7
 background-blur-radius = 50
 
 # macOS specific features
 macos-titlebar-style = hidden
 window-decoration = false 
 window-padding-x = 10
-window-padding-y = 10
+window-padding-y = 10,0
 
 # font
 macos-option-as-alt = true
