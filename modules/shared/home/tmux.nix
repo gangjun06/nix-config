@@ -6,6 +6,7 @@
 }: {
   home.packages = [
     pkgs.yq-go
+    pkgs.gitmux
   ];
 
   programs.tmux = {
@@ -20,5 +21,9 @@
   home.file.".config/tmux-custom-config" = {
     source = config.lib.file.mkOutOfStoreSymlink "${userConfig.nixConfig}/modules/shared/files/tmux";
     recursive = true;
+  };
+
+  home.file.".gitmux.conf" = {
+     source = config.lib.file.mkOutOfStoreSymlink "${userConfig.nixConfig}/modules/shared/files/tmux/gitmux.conf";
   };
 }
