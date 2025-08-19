@@ -103,6 +103,10 @@ in {
           eval "$(DIRENV_LOG_FORMAT= direnv export zsh)"  # Need to trigger "hook" manually
         fi
       fi
+
+      if test -f ~/.config/shell-secrets.fish
+        source ~/.config/shell-secrets.fish
+      end
     '';
   };
 
@@ -216,6 +220,8 @@ in {
 
       gcloud.disabled = true;
       aws.disabled = true;
+
+      git_branch.truncation_length = 26;
     };
   };
   catppuccin.starship.enable = true;
