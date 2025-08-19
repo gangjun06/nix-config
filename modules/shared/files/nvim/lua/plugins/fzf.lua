@@ -17,6 +17,7 @@ return {
 
       opts.file_ignore_patterns = {
         "node_modules",
+        "go/pkg",
         "dist",
         ".next",
         ".git",
